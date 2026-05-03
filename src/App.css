@@ -1,0 +1,138 @@
+.app {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 48px);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.5)),
+    var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  animation: fadeUp 600ms ease-out;
+}
+
+.app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    420px 160px at 12% 0%,
+    rgba(249, 115, 22, 0.22),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  letter-spacing: 0.02em;
+}
+
+.panel {
+  background: rgba(12, 12, 12, 0.7);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.section-title {
+  margin: 0 0 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+.user-list {
+  display: grid;
+  gap: 12px;
+}
+
+.user-card {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #0d0d0f;
+  border: 1px solid #202020;
+  color: var(--text);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  animation: rise 500ms ease both;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(249, 115, 22, 0.6);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+}
+
+.action {
+  align-self: start;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #121212;
+  background: linear-gradient(135deg, var(--accent), #f59e0b);
+  box-shadow: 0 10px 26px rgba(249, 115, 22, 0.35);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.action:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 14px 32px rgba(249, 115, 22, 0.45);
+}
+
+.action:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 20px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .action {
+    width: 100%;
+    text-align: center;
+  }
+}
